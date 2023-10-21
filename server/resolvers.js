@@ -6,6 +6,7 @@ export const resolvers = {
   },
 
   Job: {
+    title: (job) => job.title,
     date: (job) => toIsoDate(job.createdAt),
   },
 }
