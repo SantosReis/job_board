@@ -7,7 +7,7 @@ getJobs().then((jobs) => console.log('jobs: ', jobs))
 function HomePage() {
   const [jobs, setJobs] = useState([])
   useEffect(() => {
-    getJobs().then((jobs) => setJobs(jobs))
+    getJobs().then(setJobs)
   }, [])
 
   console.log('[HomePage] jobs:', jobs)
