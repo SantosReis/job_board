@@ -7,11 +7,7 @@ export const resolvers = {
   },
 
   Job: {
-    title: (job) => job.title,
-    company: (job) => {
-      console.log(job)
-      return getCompany(job.companyId)
-    },
+    company: (job) => getCompany(job.companyId),
     date: (job) => toIsoDate(job.createdAt),
   },
 }
