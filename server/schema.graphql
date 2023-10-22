@@ -8,6 +8,7 @@ type Company {
   id: ID!
   name: String!
   description: String
+  jobs: [Job!]!
 }
 
 # This is a regular comment. Developer side only.

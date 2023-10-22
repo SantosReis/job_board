@@ -4,11 +4,16 @@ const client = new GraphQLClient('http://localhost:9000/graphql')
 
 export async function getCompany(id) {
   const query = gql`
-    query Company($id: ID!) {
+    query CompanyById($id: ID!) {
       company(id: $id) {
         id
         name
         description
+        jobs {
+          id
+          date
+          title
+        }
       }
     }
   `
