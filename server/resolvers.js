@@ -3,10 +3,8 @@ import { getJob, getJobs } from './db/jobs.js'
 
 export const resolvers = {
   Query: {
-    job: (_root, { id }) => {
-      console.log('[Query.job] id:', id).getJob(id)
-      return null
-    },
+    company: (_root, { id }) => getCompany(id),
+    job: (_root, { id }) => getJob(id),
     jobs: () => getJobs(),
   },
 
