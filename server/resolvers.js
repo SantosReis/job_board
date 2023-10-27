@@ -5,6 +5,7 @@ import {
   getJobs,
   getJobByCompany,
   createJob,
+  updateJob,
   deleteJob,
 } from './db/jobs.js'
 
@@ -31,6 +32,9 @@ export const resolvers = {
     createJob: (_root, { input: { title, description } }) => {
       const companyId = 'FjcJCHJALA4i' //TODO set based on database
       return createJob({ companyId, title, description })
+    },
+    updateJob: (_root, { input: { id, title, description } }) => {
+      return updateJob({ id, title, description })
     },
     deleteJob: (_root, { id }) => deleteJob(id),
   },
