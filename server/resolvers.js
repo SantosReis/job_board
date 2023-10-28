@@ -29,15 +29,16 @@ export const resolvers = {
   },
 
   Mutation: {
-    createJob: (_root, { input: { title, description } }, { auth }) => {
-      // console.log('[createJob] auth: ', auth)
+    createJob: (_root, { input: { title, description } }, { user }) => {
+      // console.log('[createJob] user: ', user)
       // return null
-      if (!auth) {
+      if (!user) {
         throw unauthorizedError('Missing authentication')
       }
-
-      const companyId = 'FjcJCHJALA4i' //TODO set based on database
-      return createJob({ companyId, title, description })
+      console.log('[createJob] auth: ', user)
+      return createJob({ companyId: user.companyId, title, description })
+      // const companyId = 'FjcJCHJALA4i' //TODO set based on database
+      // return createJob({ companyId, title, description })
     },
     updateJob: (_root, { input: { id, title, description } }) => {
       return updateJob({ id, title, description })
