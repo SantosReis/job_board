@@ -35,6 +35,14 @@ const apolloClient = new ApolloClient({
   link: concat(authLink, httpLink),
   uri: 'http://localhost:9000/graphql',
   cache: new InMemoryCache(),
+  // defaultOptions: {
+  //   query: {
+  //     fetchPolicy: 'network-only',
+  //   },
+  //   watchQuery: {
+  //     fetchPolicy: 'cache-first',
+  //   },
+  // },
 })
 
 export async function createJob({ title, description }) {
@@ -131,6 +139,9 @@ export async function getJobs() {
   `
   // const { jobs } = await client.request(query)
   // return jobs
-  const { data } = await apolloClient.query({ query })
+  const { data } = await apolloClient.query({
+    query,
+    fetchPolicy: 'network-only',
+  })
   return data.jobs
 }
