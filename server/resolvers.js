@@ -25,7 +25,7 @@ export const resolvers = {
       }
       return job
     },
-    jobs: () => getJobs(),
+    jobs: (_root, { limit }) => getJobs(limit),
   },
 
   Mutation: {
